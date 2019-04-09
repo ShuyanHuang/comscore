@@ -20,13 +20,13 @@ from fuzzywuzzy import fuzz
 
 
 ## load the comScore data I get on Sep 18, 2018
-df = pd.read_stata('./data/transactions2016_books_prod2.dta')
+df = pd.read_csv('./data/transactions2016_movies.csv')
 # There are 20978 books in the data
 
 N = len(df)
 
-test = df['prod_name'].values[:1000]
-N=1000
+test = df['prod_name'].values
+
 # compute the similarity of all the book name pairs
 start = time.clock()
 
@@ -58,7 +58,7 @@ print ("Time used to compute similarity: %s" % elapsed)
 thres = 80
 indices = np.where(I >= thres)
 out_df = pd.DataFrame({'index1':indices[0], 'index2':indices[1], 'similarity':I[indices], 'name1':test[indices[0]], 'name2':test[indices[1]]})
-out_df.to_csv('./data/summary_80.csv', index=False)
+out_df.to_csv('./data/summary_80_movie.csv', index=False)
     
 
 
