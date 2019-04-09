@@ -55,10 +55,10 @@ for i in range(N):
 elapsed = (time.clock() - start)
 print ("Time used to compute similarity: %s" % elapsed)
 
-thres = 80
+thres = 85
 indices = np.where(I >= thres)
 out_df = pd.DataFrame({'index1':indices[0], 'index2':indices[1], 'similarity':I[indices], 'name1':test[indices[0]], 'name2':test[indices[1]]})
-out_df.to_csv('./data/summary_80_movie.csv', index=False)
+out_df.to_csv('./data/summary_85_movies.csv', index=False) 
     
 
 
